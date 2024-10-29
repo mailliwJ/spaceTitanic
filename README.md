@@ -1,4 +1,7 @@
 # Space Titanic ML Project
+<div style='text-align: left;'>
+    <img src='./imgs/spaceshipTitanic.jpg' alt='Spaceship Titanic' width='50%'/>
+</div>
 
 ## Project Overview
 
