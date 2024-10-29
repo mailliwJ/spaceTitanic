@@ -44,11 +44,13 @@ Some of the features do not contribute much insight directly, however they can b
 
 ## Data Preprocessing and Feature Engineering
 
+After a brief exploration of the training dataset I devised a strategy for imputing missing values. I decided to use a combination of methods
 use of custom classes to carry out imputation
 porportional imputer funciton
 KNN Imputer
 
 Pipeline set-up
+the development of a working pipeline structure took several iterations to overcome various errors. My final pipeline solution includes a 
 why its important
 
 use of cutom classes and column transformers
