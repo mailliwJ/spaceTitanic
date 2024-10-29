@@ -9,7 +9,7 @@ import seaborn as sns
 # ----------------------------------------------------------------------------------------------------------------
 
 def describe_and_suggest(df, cat_threshold=10, cont_threshold=10.0, count=False, transpose=False):
-    # Validate input type
+
     if not isinstance(df, pd.DataFrame):
         raise TypeError(f'Input must be a pandas DataFrame, but received {type(df).__name__}.')
     
@@ -30,12 +30,10 @@ def describe_and_suggest(df, cat_threshold=10, cont_threshold=10.0, count=False,
     if not isinstance(cont_threshold, float):
         raise TypeError(f'cont_threshold must be a float, but received {type(cont_threshold).__name__}.')
 
-    # Get the number of rows in the DataFrame
     num_rows = len(df)
     if num_rows == 0:
         raise ValueError('The DataFrame is empty.')
 
-    # Calculate key summary statistics
     data_type = df.dtypes
     null_count = df.notna().sum()
     missings = df.isna().sum()
@@ -43,7 +41,6 @@ def describe_and_suggest(df, cat_threshold=10, cont_threshold=10.0, count=False,
     unique_values = df.nunique()
     cardinality = round(unique_values / num_rows * 100, 2)
 
-    # Create summary DataFrame
     df_summary = pd.DataFrame({
         'Data Type': data_type,
         'Not-Null': null_count,
@@ -53,7 +50,6 @@ def describe_and_suggest(df, cat_threshold=10, cont_threshold=10.0, count=False,
         'Cardinality (%)': cardinality
     })
 
-    # Prepare suggested feature types
     suggested_types = []
 
     for col in df.columns:
@@ -71,10 +67,8 @@ def describe_and_suggest(df, cat_threshold=10, cont_threshold=10.0, count=False,
         
         suggested_types.append(suggested_type)
     
-    # Add suggested types to the summary DataFrame
     df_summary['Suggested Type'] = suggested_types
 
-    # Transpose the DataFrame if requested
     if transpose:
         return df_summary.T
     return df_summary
