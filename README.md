@@ -78,6 +78,6 @@ Show score in submission on Kaggle
 
 - `data/`: Folder containing raw datasets
 - `notebooks/`: Jupyter notebooks documenting data exploration, preprocessing, feature engineering, model construction and evaluation
+- `imgs/`: Folder continaing images used in notebooks
 - `src/`: Python scripts for custom functions, preprocessing classes and pipeline setup
 - `README.md`: Project overivew and documentation 
-
