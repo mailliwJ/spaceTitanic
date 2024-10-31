@@ -15,6 +15,7 @@ The problem is a binary classification task, in which the model predicts the lik
 
 1. Build a classification model that achieves over 80% accuracy on the prediction dataset
 2. Develop and use custom classes and functions to structure machine learning projects for efficient preprocessing, feature engineering, and evaluation
+3. Continue developing [MLToolz](https://github.com/mailliwJ/MLToolz) and [VizToolz](https://github.com/mailliwJ/VizToolz) scripts which have now been turned into packages for easier access and use in future projects.
 
 ## Dataset Description
 
