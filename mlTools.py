@@ -6,6 +6,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+from scipy.stats import pearsonr, chi2_contingency
+
 # ----------------------------------------------------------------------------------------------------------------
 
 def describe_and_suggest(df, cat_threshold=10, cont_threshold=10.0, count=False, transpose=False):
@@ -72,3 +74,90 @@ def describe_and_suggest(df, cat_threshold=10, cont_threshold=10.0, count=False,
     if transpose:
         return df_summary.T
     return df_summary
+
+# -----------------------------------------------------------------------------------------------------------------------------------
+
+def select_num_features(data, target_col, target_type='num', corr_threshold=0.5, pvalue=0.05, cardinality=20):
+    """
+    Identifies numeric columns in a DataFrame that are significantly related to the 'target_col' based on
+    correlation for numeric targets or Chi-square for categorical targets. 
+
+    Parameters
+    ----------
+    data : pandas.DataFrame
+        DataFrame containing the data.
+    target_col : str
+        Target column to correlate with other numeric columns.
+    target_type : {'num', 'cat'}
+        Type of target column. 'num' for numeric, 'cat' for categorical.
+    corr_threshold : float, optional
+        Correlation threshold for numeric targets (absolute value between 0 and 1).
+    pvalue : float, optional
+        Significance level for filtering statistically significant features (default 0.05).
+    cardinality : int, optional
+        Minimum unique values required for a numeric feature to be considered continuous.
+
+    Returns
+    -------
+    features_num : list
+        A list of numeric column names that are significantly associated with 'target_col' 
+        based on the selected method.
+    """
+    
+    # Validate the DataFrame
+    if not isinstance(data, pd.DataFrame):
+        print('The "data" parameter must be a pandas DataFrame.')
+        return None
+    
+    # Validate target_col exists in the DataFrame
+    if target_col not in data.columns:
+        print(f'The column "{target_col}" is not present in the DataFrame.')
+        return None
+
+    # Validate target_type
+    if target_type not in ('num', 'cat'):
+        print('The "target_type" parameter must be either "num" or "cat".')
+        return None
+    
+    # Additional check for pvalue when target_type is 'cat'
+    if target_type == 'cat' and pvalue is None:
+        print('For target_type "cat", "pvalue" must have a specified value.')
+        return None
+
+    # Initialize the list to store selected features
+    features_num = []
+
+    # Select numeric columns excluding the target column
+    numeric_cols = data.select_dtypes(include=[int, float]).columns.difference([target_col])
+    
+    # If target is numeric, use Pearson correlation
+    if target_type == 'num':
+        if not pd.api.types.is_numeric_dtype(data[target_col]):
+            print(f'For target_type "num", "{target_col}" must be numeric.')
+            return None
+        
+        # Calculate Pearson correlation and filter by threshold and cardinality
+        for col in numeric_cols:
+            if data[col].nunique() >= cardinality:  # Only include features with sufficient cardinality
+                corr, p_val = pearsonr(data[col], data[target_col])
+                if abs(corr) >= corr_threshold and (pvalue is None or p_val <= pvalue):
+                    features_num.append(col)
+    
+    # If target is categorical, use Chi-square test
+    elif target_type == 'cat':
+        if pd.api.types.is_numeric_dtype(data[target_col]):
+            print(f'For target_type "cat", "{target_col}" should be categorical.')
+            return None
+        
+        # Calculate Chi-square statistic for each numeric feature against the categorical target
+        for col in numeric_cols:
+            if data[col].nunique() >= cardinality:  # Only include features with sufficient cardinality
+                contingency_table = pd.crosstab(data[col].apply(pd.cut, bins=5, labels=False), data[target_col])
+                chi2, p_val, _, _ = chi2_contingency(contingency_table)
+                if p_val <= pvalue:
+                    features_num.append(col)
+
+    # Return the list of selected numeric features
+    return features_num
+
+# ----------------------------------------------------------------------------------------------------------------
