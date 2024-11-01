@@ -84,4 +84,5 @@ Show score in submission on Kaggle
 - `models/`: Folder containing saved models to 'save' time retraining
 - `notebooks/`: Jupyter notebooks documenting data exploration, preprocessing, feature engineering, model construction and evaluation stored as episode in this saga of a space project
 - `utils/`: Python scripts for custom functions, preprocessing classes and pipeline setup
-- `README.md`: Project overivew and documentation 
+- `README.md`: Project overivew and documentation
+- `projectBrief.md`: Summary of the project task
