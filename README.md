@@ -79,8 +79,9 @@ Show score in submission on Kaggle
 
 ## Project Structure
 
-- `data/`: Folder containing raw datasets
-- `notebooks/`: Jupyter notebooks documenting data exploration, preprocessing, feature engineering, model construction and evaluation
+- `data/`: Folder containing raw and processed datasets
 - `imgs/`: Folder continaing images used in notebooks
-- `src/`: Python scripts for custom functions, preprocessing classes and pipeline setup
+- `models/`: Folder containing saved models to 'save' time retraining
+- `notebooks/`: Jupyter notebooks documenting data exploration, preprocessing, feature engineering, model construction and evaluation stored as episode in this saga of a space project
+- `utils/`: Python scripts for custom functions, preprocessing classes and pipeline setup
 - `README.md`: Project overivew and documentation 
