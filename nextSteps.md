@@ -20,3 +20,5 @@ ERROR in Stacking Classifier
 
 5. CatBooost issues:
     - see [here](https://github.com/kinir/catboost-with-pipelines/blob/master/sklearn-pandas-catboost.ipynb)
+
+6. Add a cleaned version of dataset to /data directory
