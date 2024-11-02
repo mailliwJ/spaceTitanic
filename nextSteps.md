@@ -17,3 +17,6 @@ ERROR in Stacking Classifier
 
 4. EDA
     - Use PhiK matrix for checking features for colinearity and correlations with target
+
+5. CatBooost issues:
+    - see [here](https://github.com/kinir/catboost-with-pipelines/blob/master/sklearn-pandas-catboost.ipynb)
