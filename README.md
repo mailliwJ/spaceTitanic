@@ -20,7 +20,7 @@ The problem is a binary classification task, in which the model predicts the lik
 ## Dataset Description
 
 Two datasets were available for this project via [Kaggle](https://www.kaggle.com/competitions/spaceship-titanic/data)
-; a training set and a predictions set. Both datasets include the same features, except for the prediction set no having the target feature, 'Transported'. The features are all based on passenger-related information. The table below outlines the features. The training set is fairly clean, however all columns except `PassengerId` and `Transported` have missing values that require addressing.
+; a training set and a predictions set. Both datasets include the same features, except for the prediction set no having the target feature, 'Transported'. The features are all based on passenger-related information. The table below outlines the features. The training set is fairly clean, however all columns except `PassengerId` and `Transported` have missing values that require addressing. The original features are described in the table below:
 
 |Feature|Description|
 |-|-|
