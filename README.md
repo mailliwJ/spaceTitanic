@@ -76,6 +76,7 @@ functions to modularize visualization and presentation of performance metrics
 ## Results
 
 Show score in submission on Kaggle
+Follow this [link](kaggle) to see my kaggle submission and prediction accuracy score on Kaggle
 
 ## Project Structure
 

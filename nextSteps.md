@@ -7,6 +7,8 @@ ERROR in Stacking Classifier
         a) SeletKBest using mutual_info_score
         b) Recursive Feature Elimination check [here](https://machinelearningmastery.com/rfe-feature-selection-in-python/) and [here](https://medium.com/@hsu.lihsiang.esth/feature-selection-with-recursive-feature-elimination-rfe-for-parisian-bike-count-data-23f0ce9db691#:~:text=Firstly%2C%20unlike%20SelectKBest%2C%20RFECV%20does,the%20number%20of%20features%20dynamically.)
 
+        ---> RFE (select=5) made the model worse. try rerunning in pipeline on all algorithms
+
 2. Reconsider Pipeline:
     - Is there a better way to construct the final pipeline so that bianry variables do not have to be one-hot encoded?
         - Investigate adding parameters to the custom classes and focus on returning only the columns wanted as input for final model.
