@@ -20,3 +20,7 @@ LogisticRegression|0.747348|0.745064|0.797293|
 |RandomForestClassifier|0.801845|0.801898|0.888602|
 |LGBMClassifier|0.803691|0.807208|0.899289|
 |XGBClassifier|0.798819|0.800827|0.895854|
+
+- Getting slightly better scores without recursive feature elimination (RFE, n_features=8)
+- also tried with 5 and the results were even worse
+- looks like it a better idea to have an 'all in' model or more feature engineering is required
