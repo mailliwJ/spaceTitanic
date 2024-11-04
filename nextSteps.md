@@ -25,3 +25,13 @@ ERROR in Stacking Classifier
     - see [here](https://github.com/kinir/catboost-with-pipelines/blob/master/sklearn-pandas-catboost.ipynb)
 
 6. Add a cleaned version of dataset to /data directory
+
+***Concept to clarify in project:*** 
+- fit
+- transform
+- what are the params of each algorithm used (maths)
+- cross-validation
+- pipelines and combination with cross-validation
+- metrics
+
+Check drop / reorder stage in workflow of notebook 1
