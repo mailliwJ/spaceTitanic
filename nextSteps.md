@@ -6,6 +6,7 @@ ERROR in Stacking Classifier
     - Investigate the use / implementation of the following:
         a) SeletKBest using mutual_info_score
         b) Recursive Feature Elimination check [here](https://machinelearningmastery.com/rfe-feature-selection-in-python/) and [here](https://medium.com/@hsu.lihsiang.esth/feature-selection-with-recursive-feature-elimination-rfe-for-parisian-bike-count-data-23f0ce9db691#:~:text=Firstly%2C%20unlike%20SelectKBest%2C%20RFECV%20does,the%20number%20of%20features%20dynamically.)
+    
 
         ---> RFE (select=5) made the model worse. try rerunning in pipeline on all algorithms
         -> still need to investigate slectKbest
@@ -18,13 +19,9 @@ ERROR in Stacking Classifier
 
 3. Ensure understanding of stacking and voting classifiers
 
-4. EDA
-    - Use PhiK matrix for checking features for colinearity and correlations with target
-
 5. CatBooost issues:
     - see [here](https://github.com/kinir/catboost-with-pipelines/blob/master/sklearn-pandas-catboost.ipynb)
 
-6. Add a cleaned version of dataset to /data directory
 
 ***Concept to clarify in project:*** 
 - fit
@@ -35,3 +32,5 @@ ERROR in Stacking Classifier
 - metrics
 
 Check drop / reorder stage in workflow of notebook 1
+
+chec cleanTransform.py
