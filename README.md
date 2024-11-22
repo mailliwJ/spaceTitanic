@@ -41,34 +41,37 @@ Two datasets were available for this project via [Kaggle](https://www.kaggle.com
 
 ## Key Feature Creation
 
-Some of the features do not contribute much insight directly, however they can be transformed into more useful features. I have create the following features:
+Some of the features do not contribute much insight directly, however they can be transformed into more useful features. I have created the following features:
 
 ## Data Preprocessing and Feature Engineering
 
-After a brief exploration of the training dataset I devised a strategy for imputing missing values. I decided to use a combination of methods
-use of custom classes to carry out imputation
-porportional imputer funciton
-KNN Imputer
+After a brief exploration of the training dataset I devised a strategy for imputing missing values. I decided to use a combination of methods combining simple imputation and proportional imputation and a KNN imputer
+I have used custom transformer classes to carry out imputation within pipelines
 
 Pipeline set-up
-the development of a working pipeline structure took several iterations to overcome various errors. My final pipeline solution includes a 
-why its important
+the development of a working pipeline structure took several iterations to overcome various errors. The final pipeline solution is very important for the prevention of data leakage and the preservation of an unseen validation set during cross-validation. Using a pipeline ensures that for each fold and validation set in cross validation, the training set is used to calulate required information for imputation and this calulated information is then used to impute missing data or carry out KNN on the validation fold.
 
-use of cutom classes and column transformers
-- power transformations
-- scaling
-- encoding
 
 ## Model Selection and Evaluation
 
-Which algorithms chosen to investigate initially
-how these were evaluated (including discussion about metrics)
-functions to modularize visualization and presentation of performance metrics
-- classification report
-- confusion matrix
+I initially ran baseline tests on the following algorithms:
+- Logistic Regression
+- Support Vector Classifer
+- Random Forest Classifier
+- Light GBM Classifier
+- XGBoost Classifier
+- Catboost Classifier
 
-## Model Tuning
-- exploration of hyperparameter tuning using gridsearchCV, randomizedsearchCV and bayesian methods using optuna
+I continued to tune the hyperparameters using GridSearhCV of:
+- Random Forest Classifier
+- Light GBM Classifier
+- XGBoost Classifier
+
+Final models where then evaluated against a reserved and unused validation set. All models were evaluated for accuracy as this is the metric required for a submission to the Kaggle competition, however, i looked at precision, recall, f1 and ROC-AUC as well.
+
+
+Classification reports and confusion matrices were used to aid evaluation
+
 
 ## Voting and Stacking methods
 - Sideline investigation into potential for a stacked and or voting classifier
@@ -84,8 +87,10 @@ The following image shows the submission results on my Kaggle account:
 
 - `data/`: Folder containing raw and processed datasets
 - `imgs/`: Folder continaing images used in notebooks
-- `models/`: Folder containing saved models to 'save' time retraining
-- `notebooks/`: Jupyter notebooks documenting data exploration, preprocessing, feature engineering, model construction and evaluation stored as episode in this saga of a space project
+- `models/`: Folder containing saved models
+- `submissions/`: Contains the .csv files to be submitted to Kaggle
+- `notebooks/`: Jupyter notebooks documenting data exploration, preprocessing, feature engineering, model construction and evaluation
 - `utils/`: Python scripts for custom functions, preprocessing classes and pipeline setup
 - `README.md`: Project overivew and documentation
+- `presentation.ppt`: ppt presentation of this project
 - `projectBrief.md`: Summary of the project task
