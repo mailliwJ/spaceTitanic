@@ -75,9 +75,10 @@ functions to modularize visualization and presentation of performance metrics
 
 ## Results
 
-Show score in submission on Kaggle
-Follow this [link](kaggle) to see my kaggle submission and prediction accuracy score on Kaggle
-
+The following image shows the submission results on my Kaggle account:
+<div style='text-align: left;'>
+    <img src='./imgs/results.png' alt='Submission Results' width='50%'/>
+</div>
 ## Project Structure
 
 - `data/`: Folder containing raw and processed datasets
